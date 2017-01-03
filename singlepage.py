@@ -223,7 +223,6 @@ def pull_data(url, links_file, stats_file):
     raw_paragraph_tags = [str(tag).lower() for tag in text.find_all(lambda tag: tag.name == 'p' and not tag.attrs)] 
     #strip out any tags that contain words also found in junk terms file--this helps us filter out text that appears in headers, footers and rails
     paragraph_tags = [tag.lower() for tag in raw_paragraph_tags]
-    print paragraph_tags
     junk_terms = open('junk_terms.txt').readlines()
     junk_terms = [l.strip('\n\r') for l in junk_terms]
     regex = re.compile("|".join(r"\b{}\b".format(term) for term in junk_terms))
